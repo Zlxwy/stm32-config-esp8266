@@ -5,6 +5,7 @@ This is my first GitHub repository project. &#x1F602;&#x1F602;
 * [分别介绍](#分别介绍)
   * [关于esp8266连接原子云平台-stm32f103](#关于esp8266连接原子云平台-stm32f103)
   * [关于esp8266连接原子云平台-stm32f407](#关于esp8266连接原子云平台-stm32f407)
+* [参考资料](#参考资料)
 
 # 项目简介
 - 使用stm32芯片，通过AT指令自动配置esp8266连接原子云.
@@ -79,3 +80,7 @@ This is my first GitHub repository project. &#x1F602;&#x1F602;
   - 也可以通过串口1在电脑串口助手发送消息，USART1接收到消息后，在接收中断中将信息通过USART3_TX发送到ESP8266_RXD，
   - ESP8266_RXD接收到消息后，将消息上传至原子云，可在原子云查看消息。
 
+# 参考资料
+- [【正点原子资料下载链接】WIFI模块ATK-ESP8266(ESP 01)](http://www.openedv.com/docs/modules/iot/atk-esp.html)
+- [【CSDN】ESP8266 WIFI 模块和手机通信](https://blog.csdn.net/weixin_53944340/article/details/125719320)
+- [【Opendv】kaiyuan8266点对点透传](http://www.openedv.com/forum.php?mod=viewthread&tid=325781&highlight=%B5%E3%B6%D4)
