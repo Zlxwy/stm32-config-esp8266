@@ -112,31 +112,6 @@ uint8_t check_res_state(const char *str)
     else return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //如果需要自定义发送的指令组，只需要更改宏定义 COMMAND_NUM 和函数 command_init() 即可
 #define COMMAND_NUM    5        //需要发送指令的条数
 char COMMAND[COMMAND_NUM][50];  //指令组
