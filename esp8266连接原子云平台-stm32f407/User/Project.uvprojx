@@ -646,21 +646,6 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>ReadMe</GroupName>
-          <Files>
-            <File>
-              <FileName>工程说明.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\ReadMe\工程说明.txt</FilePath>
-            </File>
-            <File>
-              <FileName>F407ZGT6新建文件流程.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\ReadMe\F407ZGT6新建文件流程.txt</FilePath>
-            </File>
-          </Files>
-        </Group>
       </Groups>
     </Target>
   </Targets>
