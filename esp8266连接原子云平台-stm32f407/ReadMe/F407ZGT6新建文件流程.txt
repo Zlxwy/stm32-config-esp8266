@@ -1,0 +1,112 @@
+1、在项目根目录下新建5个文件夹：
+CORE
+FWLIB
+OBJ
+SYSTEM
+USER
+
+2、在Keil5中新建工程至USER文件夹下，选择STM32F407ZGTx的MCU，弹出的Manage Run-Time Environment先关掉
+
+3、解压标准库固件包
+
+4、在标准库固件包下打开路径：
+\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\STM32F4xx_StdPeriph_Driver
+把路径下的两个文件夹：
+src
+inc
+复制到工程目录下的FWLIB文件夹中。
+
+5、在标准库固件包下
+（1）打开路径：
+\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm
+将文件：
+startup_stm32f40_41xxx.s
+复制到CORE文件夹中，
+（2）打开路径：
+\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include
+将四个头文件：
+core_cm4.h
+core_cm4_simd.h
+core_cmFunc.h
+core_cmInstr.h
+也复制到CORE文件夹中。
+
+6、在标准库固件包下
+（1）打开路径：
+\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include
+将两个头文件：
+stm32f4xx.h
+system_stm32f4xx.h
+复制到工程目录的USER文件夹中，
+（2）打开路径：
+\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Project\STM32F4xx_StdPeriph_Templates
+将目录下的五个文件：
+main.c
+stm32f4xx_conf.h
+stm32f4xx_it.c
+stm32f4xx_it.h
+system_stm32f4xx.c
+复制到工程目录的USER文件夹中。
+
+7、随便找正点原子的一个对应芯片的例程，在SYSTEM目录下，把三个文件夹：
+delay
+sys
+usart
+复制到自己工程目录下的SYSTEM文件夹中。
+
+8、回到Keil5，
+（1）在三个箱子即Manage Project Items窗口里，添加4个组：
+USER
+CORE
+FWLIB
+SYSTEM
+（2）在USER分组中添加USER文件夹里的所有三个C文件：
+main.c
+stm32f4xx_it.c
+system_stm32f4xx.c
+（3）在CORE分组中添加CORE文件夹里的一个启动文件：
+startup_stm32f40_41xxx.s
+（4）在FWLIB分组中添加FWLIB文件夹里目录src下的所有文件，除了stm32f4xx_fmc.c（都是C文件，全选就行）
+（5）在SYSTEM分组中添加SYSTEM文件夹三个目录下的三个C文件：
+delay.c
+sys.c
+usart.c
+（6）点击OK确定并退出Manage Project Items窗口
+
+9、打开魔术棒即Options for Target窗口，
+（1）在Target栏下，点开ARM Compiler下拉框，选择Use default compiler 5
+（2）在Output栏下，点开Select Folder for Objects...，选择工程目录下的OBJ文件夹，作为编译文件输出文件夹，然后勾选：
+Create HEX File
+Browse Infomation
+（3）在C/C++栏下，在Define一栏填入：
+STM32F40_41xxx,USE_STDPERIPH_DRIVER
+勾选C99 Mode，在Include Paths一栏添加工程目录下所有含有头文件的路径：
+\CORE
+\FWLIB\Inc
+\USER
+\SYSTEM\delay
+\SYSTEM\sys
+\SYSTEM\usart
+（4）在Debug栏下，点开Use下拉框，选择ST-Link Debugger，然后点开右边的Settings，点入Flash Download窗口，勾选Reset and Run，点击确定，确认并退出
+（5）最后点击Options for Target窗口的OK，确认设置并退出
+
+10、左侧项目栏
+点开USER分组下的stm32f4xx_it.c文件：
+删掉第32行的语句#include "main.h"
+删掉第144行的语句TimingDelay_Decrement();
+
+11、系统时钟的配置
+打开system_stm32f4xx.c文件，在第316行的PLL_M宏定义，由25修改为8，这样芯片的时钟频率就是168MHz了。
+打开stm32f4xx.h文件，在第123行的宏定义HSE_VALUE，由25000000修改为8000000，因为外部用的晶振时钟是8MHz
+
+12、删掉在main.c的所有内容，添加模板：
+#include "stm32f4xx.h"                  // Device header
+
+int main(void)
+{
+	
+	while(1)
+	{
+		
+	}
+}

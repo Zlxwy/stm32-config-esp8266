@@ -1,0 +1,33 @@
+器件
+桔恩迪电子的STM32F407ZGT6核心板
+
+
+简介
+串口1打印调试信息，串口3配置ESP8266连接原子云，并能和原子云互相通信。
+
+
+配置
+USART1: 调试串口
+USART3: 连接ESP8266的串口
+TIM2: 辅助USART3接收ESP8266消息的定时器
+PF1: GPIO连接OLED_SCL(可不连OLED)
+PF0: GPIO连接OLED_SDA(可不连OLED)
+
+
+连线
+USART1_TX ---- 串口模块RXD
+USART1_RX ---- 串口模块TXD
+USART3_TX ---- ESP8266_RXD
+USART3_RX ---- ESP8266_TXD
+GPIO_PF1  ---- OLED_SCL
+GPIO_PF0  ---- OLED_SDA
+
+
+现象
+串口1连接电脑串口助手调试，串口3连接ESP8266配置并通信，
+上电后，USART3不断发送AT指令配置ESP8266连接原子云，在串口1上打印状态信息，
+连接上原子云后，
+    在原子云发送的消息，可被ESP8266接收到，并由USART3_RX引脚获取，
+连接上原子云后，
+    也可以通过串口1在电脑串口助手发送消息，USART1接收到消息后，在接收中断中将信息通过USART3_TX发送到ESP8266_RXD，
+    ESP8266_RXD接收到消息后，将消息上传至原子云，可在原子云查看消息。
