@@ -125,11 +125,11 @@ const char //网络端账密配置
 /**指令组初始化——配置指令组**/
 void command_init(void)
 {
-    sprintf(COMMAND[0], "AT\r\n");                                                   // 呼叫AT
-    sprintf(COMMAND[1], "ATE0\r\n");                                                 // 关闭回显
-    sprintf(COMMAND[2], "AT+CWMODE=1\r\n");                                          // 设置为STA模式
-    sprintf(COMMAND[3], "AT+CWJAP=\"%s\",\"%s\"\r\n",WIFI_SSID,WIFI_PASSWORD);       // 连接WIFI
-    sprintf(COMMAND[4], "AT+ATKCLDSTA=\"%s\",\"%s\"\r\n",EQUI_NUMBER,EQUI_PASSWORD); // 连接原子云平台
+    sprintf(COMMAND[0],"AT\r\n");                                                   // 呼叫AT
+    sprintf(COMMAND[1],"ATE0\r\n");                                                 // 关闭回显
+    sprintf(COMMAND[2],"AT+CWMODE=1\r\n");                                          // 设置为STA模式
+    sprintf(COMMAND[3],"AT+CWJAP=\"%s\",\"%s\"\r\n",WIFI_SSID,WIFI_PASSWORD);       // 连接WIFI
+    sprintf(COMMAND[4],"AT+ATKCLDSTA=\"%s\",\"%s\"\r\n",EQUI_NUMBER,EQUI_PASSWORD); // 连接原子云平台
 }
 
 /* 初始化ESP8266，会同时初始化串口3、定时器2，
