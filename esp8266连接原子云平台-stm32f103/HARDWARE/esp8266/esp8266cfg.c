@@ -132,8 +132,9 @@ void command_init(void)
     sprintf(COMMAND[4],"AT+ATKCLDSTA=\"%s\",\"%s\"\r\n",EQUI_NUMBER,EQUI_PASSWORD); // 连接原子云平台
 }
 
-/* 初始化ESP8266，会同时初始化串口3、定时器2，
- * 在第一行显示发送的指令，第二行到第四行显示ESP8266的回应
+/**
+ * @brief 初始化ESP8266，会同时初始化串口3、定时器2，
+ * @note 在第一行显示发送的指令，第二行到第四行显示ESP8266的回应
  */
 void ESP8266_Init(void)
 {
