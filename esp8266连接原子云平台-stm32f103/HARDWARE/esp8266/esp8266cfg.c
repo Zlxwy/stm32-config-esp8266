@@ -54,9 +54,10 @@ void TIM2_IRQHandler(void)
     }
 }
 
-/**用串口3发送字符串（注意!!!这个函数没有自动添加\r\n）（最多能发送255个字符）**
-    *@param 像printf一样的参数格式
-    **/
+/**
+ * @brief 用串口3发送字符串（注意!!!这个函数没有自动添加\r\n）（最多能发送255个字符）
+ * @param 像printf一样的参数格式
+ */
 void usart3_printf(char* fmt, ...)
 {
     va_list ap;
